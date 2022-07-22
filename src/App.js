@@ -31,16 +31,17 @@ function App() {
       colorCode: "#ccc",
     },
   ]);
+  function handleCards(singleCard) {
+    setColorCards(
+      colorCards.filter((colorCard) => {
+        return colorCard.id !== singleCard.id;
+      })
+    );
+  }
   return (
     <div className="App">
       {colorCards.map((card) => {
-        return (
-          <ColorCards
-            singleCard={card}
-            cardSet={colorCards}
-            handleCards={setColorCards}
-          />
-        );
+        return <ColorCards singleCard={card} handleCards={handleCards} />;
       })}
     </div>
   );

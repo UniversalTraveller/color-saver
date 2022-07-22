@@ -1,7 +1,7 @@
 import "./colorCards.css";
 import React from "react";
 
-export default function ColorCards({ singleCard, cardSet, handleCards }) {
+export default function ColorCards({ singleCard, handleCards }) {
   return (
     <div
       className="colorCards"
@@ -13,14 +13,8 @@ export default function ColorCards({ singleCard, cardSet, handleCards }) {
       {" "}
       <button
         type="button"
-        className="colorButton"
-        onClick={() =>
-          handleCards(
-            cardSet.filter((colorCard) => {
-              return colorCard.id !== singleCard.id;
-            })
-          )
-        }
+        className="deleteButton"
+        onClick={() => handleCards(singleCard)}
       >
         x
       </button>
