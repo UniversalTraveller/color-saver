@@ -1,51 +1,36 @@
 import "./colorCards.css";
 import React from "react";
-import { nanoid } from "nanoid";
 
-export default function ColorCards() {
-  const colorCards = [
-    {
-      id: nanoid(),
-      colorCode: "#ccc",
-    },
-    {
-      id: nanoid(),
-      colorCode: "#4c6ef5",
-    },
-    {
-      id: nanoid(),
-      colorCode: "#82c91e",
-    },
-    {
-      id: nanoid(),
-      colorCode: "#12b886",
-    },
-    {
-      id: nanoid(),
-      colorCode: "#82c91e",
-    },
-    {
-      id: nanoid(),
-      colorCode: "#ccc",
-    },
-  ];
+export default function ColorCards({ singleCard, cardSet, handleCards }) {
   return (
-    <>
-      {colorCards.map((card) => {
-        return (
-          <div
-            className="colorCards"
-            style={{
-              background: card.colorCode,
-            }}
-            key={card.id}
-          >
-            <button type="button" className="colorButton">
-              {card.colorCode}
-            </button>
-          </div>
-        );
-      })}
-    </>
+    <div
+      className="colorCards"
+      style={{
+        background: singleCard.colorCode,
+      }}
+      key={singleCard.id}
+    >
+      {" "}
+      <button
+        type="button"
+        className="colorButton"
+        onClick={() =>
+          handleCards(
+            cardSet.filter((colorCard) => {
+              return colorCard.id !== singleCard.id;
+            })
+          )
+        }
+      >
+        x
+      </button>
+      <button
+        type="button"
+        className="colorButton"
+        onClick={() => navigator.clipboard.writeText(singleCard.colorCode)}
+      >
+        {singleCard.colorCode}
+      </button>
+    </div>
   );
 }
