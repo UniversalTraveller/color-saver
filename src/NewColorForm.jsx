@@ -1,25 +1,38 @@
 import "./colorCards.css";
+import "./NewColorForm.css";
 import React, { useState } from "react";
 
 export default function NewColorForm({ addCards }) {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("#888");
   return (
-    <div className="colorCards">
+    <div className="new-color-form" style={{ backgroundColor: inputValue }}>
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          addCards(inputValue);
+          if (/^#([0-9A-F]{3}){1,2}$/i.test(inputValue)) {
+            addCards(inputValue);
+          } else {
+            setInputValue("Not a color!");
+          }
         }}
       >
         <input
-          required
+          className="new-color-form__element"
           type="color"
           value={inputValue}
           onChange={(event) => {
             setInputValue(event.target.value);
           }}
         />
-        <button type="submit" className="colorButton">
+        <input
+          className="new-color-form__element"
+          type="text"
+          value={inputValue}
+          onChange={(event) => {
+            setInputValue(event.target.value);
+          }}
+        />
+        <button className="new-color-form__element" type="submit">
           Add
         </button>
       </form>

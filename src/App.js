@@ -32,7 +32,7 @@ function App() {
       colorCode: "#ccc",
     },
   ]);
-  function handleCards(singleCard) {
+  function deleteCard(singleCard) {
     setColorCards(
       colorCards.filter((colorCard) => {
         return colorCard.id !== singleCard.id;
@@ -40,17 +40,17 @@ function App() {
     );
   }
 
-  function addCards(color) {
+  function addCard(color) {
     setColorCards([...colorCards, { id: nanoid(), colorCode: color }]);
   }
   return (
     <div className="App">
       <article className="site__segment site__segment--first">
-        <NewColorForm addCards={addCards} />
+        <NewColorForm addCards={addCard} />
       </article>
       <article className="site__segment">
         {colorCards.map((card) => {
-          return <ColorCards singleCard={card} handleCards={handleCards} />;
+          return <ColorCards singleCard={card} handleCards={deleteCard} />;
         })}
       </article>
     </div>
