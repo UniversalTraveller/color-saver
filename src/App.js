@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import ColorCards from "./ColorCards";
 import { nanoid } from "nanoid";
+import NewColorForm from "./NewColorForm";
 
 function App() {
   const [colorCards, setColorCards] = useState([
@@ -38,11 +39,20 @@ function App() {
       })
     );
   }
+
+  function addCards(color) {
+    setColorCards([...colorCards, { id: nanoid(), colorCode: color }]);
+  }
   return (
     <div className="App">
-      {colorCards.map((card) => {
-        return <ColorCards singleCard={card} handleCards={handleCards} />;
-      })}
+      <article className="site__segment site__segment--first">
+        <NewColorForm addCards={addCards} />
+      </article>
+      <article className="site__segment">
+        {colorCards.map((card) => {
+          return <ColorCards singleCard={card} handleCards={handleCards} />;
+        })}
+      </article>
     </div>
   );
 }
