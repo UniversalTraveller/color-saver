@@ -3,7 +3,7 @@ import "./NewColorForm.css";
 import React, { useState } from "react";
 
 export default function NewColorForm({ addCards }) {
-  const [inputValue, setInputValue] = useState("#888");
+  const [inputValue, setInputValue] = useState("#777777");
   return (
     <div className="new-color-form" style={{ backgroundColor: inputValue }}>
       <form
@@ -18,7 +18,7 @@ export default function NewColorForm({ addCards }) {
       >
         <input
           className="new-color-form__element"
-          type="color"
+          type="text"
           value={inputValue}
           onChange={(event) => {
             setInputValue(event.target.value);
@@ -26,7 +26,7 @@ export default function NewColorForm({ addCards }) {
         />
         <input
           className="new-color-form__element"
-          type="text"
+          type="color"
           value={inputValue}
           onChange={(event) => {
             setInputValue(event.target.value);

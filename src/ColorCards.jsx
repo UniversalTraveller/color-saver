@@ -16,7 +16,7 @@ export default function ColorCards({ singleCard, handleCards }) {
         className="deleteButton"
         onClick={() => handleCards(singleCard)}
       >
-        x
+        X
       </button>
       <button
         type="button"

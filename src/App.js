@@ -43,6 +43,7 @@ function App() {
   function addCard(color) {
     setColorCards([...colorCards, { id: nanoid(), colorCode: color }]);
   }
+
   return (
     <div className="App">
       <article className="site__segment site__segment--first">
